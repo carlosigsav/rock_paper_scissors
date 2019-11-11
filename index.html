@@ -1,0 +1,100 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Rock Paper Scissors</title>
+  <meta name="description" content="Rock Paper Scissors from Odin Project">
+  <meta name="author" content="CarlosIgSAv">
+
+ 
+
+</head>
+
+<body>
+  <script>
+      function computerPlay(){
+          var options = [
+              'rock',
+              'paper',
+              'scissors'
+          ];
+          var computerPicks = options[Math.floor(Math.random() * options.length)];
+          return computerPicks;
+      }
+
+
+
+
+      function game(){
+
+        let playerCount = 0;
+        let computerCount = 0;
+        let roundCount = 1;
+
+        function playRound(playerSelection, computerSelection){
+            playerSelection = prompt("Rock, Paper or Scissors?");
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerPlay();
+            while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors"){
+                alert("please type rock, paper or scissors");
+                playerSelection = prompt("Rock, Paper or Scissors?");
+                playerSelection = playerSelection.toLowerCase();
+            }
+                if (computerSelection === "rock"){
+                    if (playerSelection === "rock"){
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nIt's a Tie!");
+                        roundCount++;
+                    } else if (playerSelection === "paper"){
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nYou Win!");
+                        roundCount++;
+                        playerCount++;
+                    } else {
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nYou Lose!");
+                        roundCount++;
+                        computerCount++;
+                    }
+                } else if (computerSelection === "paper"){
+                    if (playerSelection === "rock"){
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nYou Lose!");
+                        roundCount++;
+                        computerCount++;
+                    } else if (playerSelection === "paper"){
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nIt's a Tie!");
+                        roundCount++;
+                    } else {
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nYou Win!");
+                        roundCount++;
+                        playerCount++;
+                    }
+                } else {
+                    if (playerSelection === "rock"){
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nYou Win!");
+                        roundCount++;
+                        playerCount++;
+                    } else if (playerSelection === "paper"){
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nYou Lose!");
+                        roundCount++;
+                        computerCount++;
+                    } else {
+                        alert("Round: " + roundCount + "\nComputer: " + computerSelection + "\nPlayer: " + playerSelection + "\nIt's a Tie!");
+                        roundCount++;
+                    }
+                } return roundCount;
+            }
+        while (playRound() < 6){
+            playRound(); 
+        }
+        if(computerCount > playerCount){
+            alert ("Computer Wins!");
+        } else {
+            alert ("Player Wins!");
+        }
+    }
+
+      game();
+      
+  </script>
+</body>
+</html>
